@@ -1,0 +1,112 @@
+---
+{
+"urlFormat" : "index.html"
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {{>head }}
+    <title>Store Locator</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/yext-favicon.png" />
+
+    <script>
+        console.log("defining initMaps Functions");
+        var initMapsFunctions = [];
+        var initMaps = function (noKey) {
+            for (i = 0; i < initMapsFunctions.length; i++) {
+                initMapsFunctions[i](noKey);
+            }
+        }
+    </script>
+    <script>
+        function loadScriptAsync(url) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.type = 'text/javascript';
+                script.async = true;
+                script.defer = true;
+                script.onload = resolve;
+                script.onerror = reject;
+                script.src = url;
+                document.head.appendChild(script);
+            });
+        }
+
+        window.mapsLoader = loadScriptAsync("https://maps.googleapis.com/maps/api/js?key={{global.googleApiKey}}&callback=initMaps&libraries=places");
+
+
+    </script>
+
+
+    <script>
+
+        /*
+      document.addEventListener("DOMContentLoaded", function () {
+        var baseURL = "https://liveapi-sandbox.yext.com/v2/accounts/me/entities?";
+        var api_key = "{{global.liveApiKey}}";
+        var vparam = "20181017";   
+        var entityTypes = "ce_departments";    
+        
+        var fullURL =
+            baseURL +
+            "api_key=" +
+            api_key +
+            "&v=" +
+            vparam + 
+            "&entityTypes=" +
+            entityTypes ;
+            
+        [].slice
+            .call(document.querySelectorAll(".location-data") || [])
+            .forEach(function (el) {
+                el.innerHTML = '<div class="col">Loading...</div>';
+            });
+        
+            fetch(fullURL).then(response => response.json()).then(result => {
+            
+                if (!result.errors) {
+                            if (result.response.count > 0) {
+                                var html = '';
+                                $.each(result.response.entities, function (index, entity) {
+                                    html += '<li class="department-list-item w-1/4 mb-4" data-name="' + entity.name + '" data-id="' + entity.meta.id + '" >';
+                                    html += '<div class="form-check relative"><input class="checkbox_departments absolute top-0 left-0 " type="checkbox" name="c_departments[]" value="' + entity.meta.id + '" id="' + entity.name + '">';
+                                    html += '<label class="relative pl-7 text-sm font-Futura font-light cursor-pointer" for="' + entity.name + '"> ' + entity.name + '</label>';
+                                    html += '</li>';
+                                });
+                                $(".department-list").html(html);
+                                
+                              $(".checkbox_departments").change(function() {                                    
+                                getLocations();
+                              });
+                                
+                            } else {
+                            }
+                        } else {
+                }
+            });
+        });
+        
+        */
+
+    </script>
+</head>
+
+<body class="font-lato">
+
+    {{>nav}}
+    <div class="inline-block w-full align-middle">
+        <div class="container">
+            <ul class="flex items-center justify-center leading-6 text-red">
+                <li class="after:content-['>'] after:mx-2"><a href="#" class="inline-block border-b border-b-red">Welcome</a></li>
+                <li>Store Locator</li>
+            </ul>
+        </div>
+    </div>
+    {{>locator}}
+    {{>footer}}
+</body>
+
+</html>

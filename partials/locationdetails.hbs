@@ -1,0 +1,26 @@
+<div class="grid grid-cols-2 gap-8 mb-10">
+    <div class="text-sm">
+        <h2 class="mb-4 text-xl text-black uppercase">{{c_c_heading2}}</h3>
+            <div class="text-[#939393] uppercase">{{address.line1}}</div>
+            <div class="text-[#939393] uppercase">{{address.city}}, {{address.region}} {{address.postalCode}}</div>
+            <div class="text-[#939393]">{{address.countryCode}}</div>
+            <p class="text-[#939393] text-xs mt-4">
+                <a href="tel:123-456-7890"> {{mainPhone}}</a>
+            </p>
+            <a id="address" class="text-red mt-4 inline-block"
+                href="https://www.google.com/maps/dir/?api=1&destination={{address.line1}} {{address.city}} {{address.region}} {{address.postalCode}}"
+                target="_blank">{{c_c_heading3}}
+            </a>
+            {{#if hours}}
+            <div class="hours mt-5">
+                <h2 class="mb-4 text-xl text-black uppercase">{{c_c_heading4}}</h3>
+                    <div class="hours-div">{{>hours hours}}</div>
+            </div>
+            {{/if}}
+    </div>
+    <div class="">
+        <iframe
+            src="https://maps.google.com/maps?q={{address.line2}},{{address.line1}},{{address.city}},{{address.region}} {{address.postalCode}},{{address.countryCode}}&en=fr&hl=es&z=14&amp;output=embed"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.pac-container{
+    @apply shadow-none border-none;
+}
+.open-now-string{
+    @apply font-bold inline-block mb-3 text-xs cursor-pointer select-none relative after:content-[''] after:inline-block after:ml-3 after:relative after:-top-1 after:border-r after:border-b after:border-black after:w-1.5 after:h-1.5 after:transform after:rotate-45;
+}

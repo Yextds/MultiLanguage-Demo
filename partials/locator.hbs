@@ -1,0 +1,89 @@
+<div class="inline-block w-full align-middle mb-10">
+  <div class="container px-4">
+     <div class ="flex flex-row">
+  <div class="filtering float-right"></div>
+    <div class="filtering2 float-right"></div>
+  <div class="filtering3 float-right"></div>
+   <button id="location-input" class=" float-left">TO RESEARCH</button>
+   </div>
+    <h1 class="pt-6 text-4xl text-center font-medium">SHOPS</h1>
+  </div>
+</div>
+<div class="inline-block w-full align-middle">
+
+  <div class="container px-4">
+
+    <div class="full-width-locator flex flex-wrap h-[calc(100vh_-_78px)] max-h-[43.75rem] overflow-hidden">
+
+   
+      <div class="panel w-[420px] pr-2.5">
+        <div class="header-section relative">
+          <div class="flex flex-row lp-param lp-param-{$customizationInstanceID}-headline mb-2.5">
+            <img
+              src="https://www.christofle.com/fstrz/r/s/www.christofle.com/static/version1655714884/frontend/Christofle/luma/fr_FR/images/icons/pin-boutique.svg?frz-v=4825"
+              width="28" height="28" class="d-inline-block marg-r-10 lazyloaded mCS_img_loaded" alt=""
+              data-frz-src="https://www.christofle.com/fstrz/r/s/www.christofle.com/static/version1655714884/frontend/Christofle/luma/fr_FR/images/icons/pin-boutique.svg?frz-v=4825">
+            <h4 class="font-medium p-2  text-sm">ALL STORES</h4>
+          </div>
+          <div class="directions "></div>
+          <div class="error-text "></div>
+          <div class="border border-black border-opacity-30 w-full px-3 py-0 flex items-center">
+            {{!-- <button class="search-bar-icon" aria-label="Search bar icon" id="search-location-button" type="submit"
+              onclick="this.blur();">
+              {{> icon-search fillColor="#333333"}}
+            </button> --}}
+            {{!-- <input type="button" value="Reload Page" onClick="//window.location.reload(true)"> --}}
+            {{!-- <input class="bg-transparent w-full mx-2 focus:outline-none py-2" type="text" id="location-input"
+              placeholder="Enter ZIP Code or Address" aria-label="E.g. New York" /> --}}
+            {{!-- button class for refresh data--}}
+
+            {{!-- <div class="mr-5 ">
+              <button onClick="//.location.href=window.location.href" class="fa fa-refresh"
+                style="font-size:12px"></button>
+            </div> --}}
+            {{!-- close --}}
+            {{!-- <button class="search-location-arrow" title="Search using your current location!" id="useLocation">
+              {{> icon-location-arrow fillColor="#333333"}}
+            </button> --}}
+          </div>
+          {{!-- <div id="query-search" class="w-full z-10 absolute top-full left-0"></div> --}}
+        </div>
+        <div class="spinner" style="display: none;">
+          <div class="sk-wave">
+            <div class="sk-rect sk-rect1"></div>
+            <div class="sk-rect sk-rect2"></div>
+            <div class="sk-rect sk-rect3"></div>
+            <div class="sk-rect sk-rect4"></div>
+            <div class="sk-rect sk-rect5"></div>
+          </div>
+        </div>
+
+        <div class="result-list mt-3 h-[500px] overflow-x-hidden overflow-y-auto">
+          <div class="result-list-inner grid gap-y-1 ">
+          </div>
+          <div class="viewMoreBtnDiv text-center pt-2 md:pt-0" style="">
+            <button id="viewMoreBtn" class="button button--small button--secondary bg-black p-2 text-sm text-white">
+              View
+              More </button>
+            <input type="hidden" id="offset" value="0">
+            <input type="hidden" id="totalCount" value="0">
+          </div>
+        </div>
+      </div>
+      <div id="map" class="w-[calc(100%_-_420px)]"></div>
+    </div>
+  </div>
+</div>
+
+<div id="js-locator" data={{global.liveApiKey}}>
+</div>
+<script>
+  window.mapsLoader && window.mapsLoader.then(() => {
+    const script = document.createElement('script');
+    script.src = 'locator.js';
+    script.async = true;
+    script.defer = true;
+    script.type = 'text/javascript';
+    document.getElementById('js-locator').appendChild(script);
+  }).catch(() => alert('Could not load Google Maps. Please check that your API key is valid.'));
+</script>
